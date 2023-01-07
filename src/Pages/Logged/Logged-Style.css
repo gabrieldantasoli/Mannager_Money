@@ -13,6 +13,12 @@
     height: 100vh;
 }
 
+.logged .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .logged header {
     display: flex;
     flex-direction: row;
@@ -22,10 +28,24 @@
     width: 100%;
     max-width: none;
     margin-bottom: 0;
+    box-shadow: 0 0 10px var(--blue);
+}
+
+.logged header img {
+    width: 40px;
+}
+
+header .user {
+    color: var(--yellow);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.user span {
+    color: var(--black);
 }
 
 .logged main {
-    background-color: yellow;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -34,19 +54,143 @@
 }
 
 
+.show, .history, .savings {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 350px;
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 3px solid var(--black);
+}
 
+.showA {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 
+.showA p {
+    font-size: 24px;
+    font-weight: bold;
+}
 
+.showA span {
+    color: var(--darkBlue);
+}
 
+.relacion div {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: calc(10% + 1px);
+    border-radius: 10px 0 0 10px;
+    z-index: -1;
+    bottom: -1px;
+    background-color: var(--green);
+}
 
+.relacion .full {
+    width: calc(100% + 2px);
+    border-radius: 10px;
+}
 
+.relacion {
+    position: relative;
+    margin: 10px 0;
+    width: 90%;
+    aspect-ratio: 1 / 0.08;
+    border-radius: 10px;
+    border: 2px solid var(--black);
+}
 
+.showB button ,
+.add button ,
+.savings button{
+    padding: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px;
+    background-color: transparent;
+    transition: ease 0.5s;
+    border-radius: 10px;
+}
 
+.showB button:nth-child(1)  ,
+.addDebts ,
+.removeSave {
+    color: var(--red);
+    border: 2px solid var(--red);
+    margin-right: 10px;
+}
 
+.showB button:nth-child(2) ,
+.add .addIncomes,
+.addSave {
+    color: var(--green);
+    border: 2px solid var(--green);
+}
 
+.showB button:nth-child(1):hover ,
+.addDebts:hover,
+.removeSave:hover {
+    background-color: var(--red);
+    color: #fff;
+}
 
+.showB button:nth-child(2):hover ,
+.add .addIncomes:hover ,
+.addSave:hover {
+    background-color: var(--green);
+    color: #fff;
+}
 
+.add {
+    margin-bottom: 10px;
+}
 
+.add button , .removeSave {
+    margin-right: 10px;
+}
+
+.add button:nth-child(3) {
+    color: var(--darkBlue);
+    border: 2px solid var(--darkBlue);
+}
+
+.add button:nth-child(3):hover {
+    background-color: var(--darkBlue);
+    color: #fff;
+}
+
+.savings > button:nth-child(1) {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    border: 3px solid var(--darkBlue);
+    background-color: transparent;
+    padding: 7px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--darkBlue);
+    transition: 0.5s;
+    margin: 0;
+}
+
+.savings > button:nth-child(1):hover {
+    color: #fff;
+    background-color: var(--darkBlue);
+}
+
+.savings h2 {
+    color: var(--darkBlue);
+    margin-bottom: 5px;
+}
 
 .logged footer {
     position: fixed;
@@ -62,7 +206,9 @@
     font-size: 20px;
 }
 
-.logged footer .logout {
+.logged .out {
+    filter: invert(1);
+    width: 50px;
     position: absolute;
     left: 10px;
     padding: 7px;
