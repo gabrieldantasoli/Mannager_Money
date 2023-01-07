@@ -14,40 +14,45 @@ export default () => {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    const { emailLogin , signed } = useContext(AuthGoogleContext);
+    const { user ,emailLogin , signed } = useContext(AuthGoogleContext);
 
     async function loginGoogle() {
         await emailLogin(email,senha);
     }
 
-    return(
-        <div className="login">
-            <header>
-                <div>
-                    <img src={Save} alt="logo" />
-                    <h2>Authentication</h2>
-                </div>
-                
-                <p>Por favor , digite suas informações de login.</p>
-            </header>
-
-            <main>
-                <div className='form'>
-                    <label htmlFor='email'>E-mail</label>
-                    <input type="text" name="email" id="email" value={email} placeholder="somebody@gmail.com" onChange={(e) => setEmail(e.target.value)} />
-
-                    <label htmlFor='senha'>Senha</label>
-                    <input type="password" name='senha' id="senha" value={senha} placeholder="************" onChange={(e) => setSenha(e.target.value)} />
-
-                    <a href='#'>Esqueceu sua senha ?</a>
-
-                    <button className="button" onClick={loginGoogle}>Entrar</button>
-                </div>
-            </main> 
-
-            <footer>
-                <p>Você não tem uma conta ? <Link to="/register">Crie uma conta</Link></p>
-            </footer>
-        </div>
-    )
+    if (!signed) {
+        return(
+            <div className="login">
+                <header>
+                    <div>
+                        <img src={Save} alt="logo" />
+                        <h2>Authentication</h2>
+                    </div>
+                    
+                    <p>Por favor , digite suas informações de login.</p>
+                </header>
+    
+                <main>
+                    <div className='form'>
+                        <label htmlFor='email'>E-mail</label>
+                        <input type="text" name="email" id="email" value={email} placeholder="somebody@gmail.com" onChange={(e) => setEmail(e.target.value)} />
+    
+                        <label htmlFor='senha'>Senha</label>
+                        <input type="password" name='senha' id="senha" value={senha} placeholder="************" onChange={(e) => setSenha(e.target.value)} />
+    
+                        <a href='#'>Esqueceu sua senha ?</a>
+    
+                        <button className="button" onClick={loginGoogle}>Entrar</button>
+                    </div>
+                </main> 
+    
+                <footer>
+                    <p>Você não tem uma conta ? <Link to="/register">Crie uma conta</Link></p>
+                </footer>
+            </div>
+        )
+    } else {
+        console.log(user)
+        return <Navigate to="/logged" />;
+    }
 }

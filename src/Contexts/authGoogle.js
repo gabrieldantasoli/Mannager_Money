@@ -51,7 +51,6 @@ export const AuthGoogleProvider = ({ children }) => {
             const token =  user.getIdToken();
             sessionStorage.setItem("@AuthFirebase:token", token);
             sessionStorage.setItem("@AuthFirebase:user", JSON.stringify(user));
-            console.log(user);
         }).catch((error) => {
             alert(error)
         });
