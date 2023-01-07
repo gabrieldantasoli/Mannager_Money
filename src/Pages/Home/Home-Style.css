@@ -1,0 +1,139 @@
+:root {
+    --green: #267365;
+    --red: #f23030;
+    --yellow: #F2CB05;
+    --black: #260101;
+    --darkBlue: #3663D6;
+    --blue: #3EA2F7;
+}
+
+.home header{
+    max-width: 100vw;
+    width: 100;
+    height: 80px;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 0px 10px var(--black);
+    margin: 0;
+    z-index: 10;
+}
+
+.home header img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.home .logo {
+    display: flex;
+    align-items: center;
+    color: var(--darkBlue);
+}
+
+.home .link {
+    color: var(--darkBlue);
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.home .link:hover {
+    font-weight: bold;
+    color: var(--blue);
+}
+
+.home main {
+    width: 100%;
+    margin-top: 0;
+}
+
+.home .why {
+    height: calc(100vh - 80px);
+    background-image: url('../../images/cresc.webp');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+}
+
+.home .why div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right,black,transparent);
+}
+
+.home .why h1 {
+    color: #fff;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.home .why p {
+    font-size: 20px;
+    color: #eee;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.home .tips {
+    min-width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f0000;
+}
+
+.home .tips div {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    color: #fff;
+}
+
+
+.home .tips h2 {
+    font-size: 30px;
+    color: #fff;
+}
+
+.home .tips p {
+    color: #aaa;
+    font-size: 20px;
+    margin-top: 30px;
+    text-indent: 10px;
+}
+
+.home .tips img{
+    border-radius: 20px;
+    max-width: 150px;
+    margin-left: 20px;
+}
+
+.home .up {
+    width: 100%;
+    padding: 20px;
+}
+
+.home .up h2 {
+    padding: 0 0 10px 0;
+}
+
+.home .up p {
+    margin-bottom: 15px; 
+}
+
+@media (max-width:500px) {
+    .home .tips div{
+        flex-direction: column;
+    }
+}

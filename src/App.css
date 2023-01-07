@@ -1,0 +1,22 @@
+:root {
+    --green: #267365;
+    --red: #f23030;
+    --yellow: #F2CB05;
+    --black: #260101;
+    --darkBlue: #3663D6;
+    --blue: #3EA2F7;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  font-family: 'Roboto' , sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}

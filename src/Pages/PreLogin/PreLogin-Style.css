@@ -1,0 +1,77 @@
+:root {
+    --darkBlue: #3663D6;
+    --blue: #3EA2F7;
+}
+
+.logins {
+    width: 100vw;
+    height: 100vh;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logins header div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.logins h2 {
+    color: var(--darkBlue);
+    font-size: 30px;
+}
+
+.logins img {
+    width: 60px;
+}
+
+.logins .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logins .buttons button, .email{
+   font-size: 24px;
+   font-weight: bold;
+   padding: 10px 50px;
+   border-radius: 15px;
+   background-color: transparent;
+   scale: 0.9;
+   transition: ease 0.2s;
+}
+
+.logins .blue {
+    color: #4285f4;
+}
+
+.logins .red {
+    color: #ea4335;
+}
+
+.logins .yellow {
+    color: #fbbc05;
+}
+
+.logins .green {
+    color: #7cbb00;
+}
+
+.google {
+    border: 3px solid #4285f4;
+}
+
+.email {
+    color: #666;
+    border: 3px solid #666;
+    text-decoration: none;
+}
+
+.logins .buttons button:hover , .email:hover {
+    scale: 1;
+}
