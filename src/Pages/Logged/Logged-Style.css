@@ -83,7 +83,7 @@ header .user {
     color: var(--darkBlue);
 }
 
-.relacion div {
+.relacion div:nth-child(1) {
     position: absolute;
     top: -1px;
     left: -1px;
@@ -92,6 +92,7 @@ header .user {
     z-index: -1;
     bottom: -1px;
     background-color: var(--green);
+    z-index: 10;
 }
 
 .relacion .full {
@@ -101,6 +102,7 @@ header .user {
 
 .relacion {
     position: relative;
+    background-color: red;
     margin: 10px 0;
     width: 90%;
     aspect-ratio: 1 / 0.08;
@@ -187,6 +189,10 @@ header .user {
     background-color: var(--darkBlue);
 }
 
+.savings p {
+    font-size: 18px;
+    font-weight: bold;
+}
 .savings h2 {
     color: var(--darkBlue);
     margin-bottom: 5px;

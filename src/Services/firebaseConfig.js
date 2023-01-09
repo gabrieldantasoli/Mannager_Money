@@ -11,17 +11,17 @@ import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyBF9eFiWz4Av9IffTd1JBvPiCcmV2srbQ0",
+  apiKey: "AIzaSyAgYYfupVmTYrpxFZtpJ_R_H6WD9dO2KeA",
 
-  authDomain: "finances-3a448.firebaseapp.com",
+  authDomain: "finances-1d618.firebaseapp.com",
 
-  projectId: "finances-3a448",
+  projectId: "finances-1d618",
 
-  storageBucket: "finances-3a448.appspot.com",
+  storageBucket: "finances-1d618.appspot.com",
 
-  messagingSenderId: "605678807501",
+  messagingSenderId: "386430431026",
 
-  appId: "1:605678807501:web:96437f552d1e2e32df7c84"
+  appId: "1:386430431026:web:282fd24deeb007eb74b12b"
 
 };
 

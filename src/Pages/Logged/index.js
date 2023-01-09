@@ -1,10 +1,20 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthGoogleContext } from '../../Contexts/authGoogle'
 import './Logged-Style.css';
 import Save from '../../images/save.png';
 import Out from '../../images/out.png';
 
+// Cloud Firestore
+import { doc, getFirestore, setDoc , collection, getDocs, addDoc, updateDoc } from "firebase/firestore"; 
+import { app } from "../../Services/firebaseConfig";
+import { async } from "@firebase/util";
+import { initializeApp } from "firebase/app";
+
+
+
+
 export default () => {
+
     const { user , signOut , signed } = useContext(AuthGoogleContext);
     
     let userLogado;
@@ -19,6 +29,70 @@ export default () => {
     function logOut() {
         signOut();
     }
+
+    // Cloud fireStores starts ----------------------
+    const [info , setInfo] = useState("");
+    const [history, setHistory] = useState("");
+
+    // database 
+    const database = getFirestore(app);
+
+    async function initializeData() {
+        await setDoc(doc(database , userLogado.uid , "info_values"), {
+            valor: 0,
+            debts: 0,
+            goal: 0,
+            goalSavings: 0,
+        },{ capital: true }, { merge: true });
+        await setDoc(doc(database , userLogado.uid , "history"), {
+            
+        },{ capital: true }, { merge: true });
+
+        /*const data = collection(database , userLogado.uid)
+        await setDoc(doc(data,"values"), {
+            value: 123,
+            a: 1,
+            b:2
+        })*/
+        
+    };
+    
+    useEffect(() => {
+        async function getData() {
+            const data = await getDocs(collection(database, userLogado.uid));
+            if (data.docs.length === 0) {
+                initializeData();
+            } else {
+                setInfo(data.docs[1].data());
+                setHistory(data.docs[0].data());
+            }
+        }
+
+        getData()
+    },[]);
+
+    async function setGoal(valor) {
+        setInfo({
+            debts: info['debts'],
+            goal: valor,
+            goalSavings: info['goal'],
+            valor: info['valor']
+        });
+
+
+        console.log(userLogado.uid)
+        const infoDoc = doc(database , userLogado.uid, "info_values");
+
+        await updateDoc(infoDoc, {
+            debts: info['debts'],
+            goal: valor,
+            goalSavings: info['goalSavings'],
+            valor: info['valor']
+        });
+    }
+
+    // Cloud fireStores ends ------------------------
+    
 
     return(
         <div className="logged">
@@ -35,9 +109,9 @@ export default () => {
             <main>
                 <div className="show">
                     <div className="showA">
-                        <p>saldo : <span className="saldo">R$500</span></p>
+                        <p>saldo : <span className="saldo">R${info['valor']}</span></p>
                         <div className="relacion">
-                            <div className="full"></div>
+                            <div className={info["debts"] === 0 ? "full" : ""} style={info['debts'] === 0 ? {"": ""} :  (info["valor"]  === 0 ? {"width": "0"} : {"width": `${(info['valor'] / (info['valor'] + info['debts']) ) * 100}%`,"backgroundColor": "#267365"})}></div>
                         </div>
                     </div>
                     
@@ -61,14 +135,14 @@ export default () => {
                 </div>
 
                 <div className="savings"> 
-                    <button className="setGoal">Set Goal</button>
+                    <button className="setGoal" onClick={() => setGoal(5000)}>Set Goal</button>
                     <h2>My Savings</h2>
                     <div>
-                        <p>Goal : <span className="goal">R${12}</span></p>
+                        <p>Goal : <span className="goal">R${info['goal']}</span></p>
 
                     </div>
                     <div className="conclued">
-                        <p className="conc">{50}%</p>
+                        <p className="conc">{info["goal"] === 0 ? "100" : (info[ 'goalSavings'] / info['goal'] * 100)}%</p>
                         <div></div>
                         <div></div>
                     </div>
